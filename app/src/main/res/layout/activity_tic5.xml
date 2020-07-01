@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99F3E9"
+    tools:context=".Tic5Activity">
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:text="Player"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:text="Score"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+        <TextView
+
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+
+            android:text="X:"
+            android:textAlignment="center"
+
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <TextView
+            android:id="@+id/textViewScore1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="0"
+
+            android:textSize="18sp"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <TextView
+
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+
+            android:text="Y:"
+            android:textAlignment="center"
+
+            android:textSize="18sp"
+            app:layout_column="0"
+            app:layout_row="2" />
+
+        <TextView
+            android:id="@+id/textViewScore2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="0"
+
+            android:textSize="18sp"
+            app:layout_column="1"
+            app:layout_row="2" />
+    </androidx.gridlayout.widget.GridLayout>
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
+        app:layout_constraintBottom_toTopOf="@+id/status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout3"
+        app:srcCompat="@drawable/grid5by5" />
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="332dp"
+        android:layout_height="289dp"
+        app:layout_constraintBottom_toTopOf="@+id/status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout3"
+        app:layout_constraintVertical_bias="0.5">
+
+
+        <ImageView
+            android:id="@+id/imageView0"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="0"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="1"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="2"
+            app:layout_column="2"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="3"
+            app:layout_column="3"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="4"
+            app:layout_column="4"
+            app:layout_row="0" />
+
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="5"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="6"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="7"
+            app:layout_column="2"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="8"
+            app:layout_column="3"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="9"
+            app:layout_column="4"
+            app:layout_row="1" />
+
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="10"
+            app:layout_column="0"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="11"
+            app:layout_column="1"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="12"
+            app:layout_column="2"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="13"
+            app:layout_column="3"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="14"
+            app:layout_column="4"
+            app:layout_row="2" />
+
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="15"
+            app:layout_column="0"
+            app:layout_row="3" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="16"
+            app:layout_column="1"
+            app:layout_row="3" />
+
+        <ImageView
+            android:id="@+id/imageView17"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="17"
+            app:layout_column="2"
+            app:layout_row="3" />
+
+        <ImageView
+            android:id="@+id/imageView18"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="18"
+            app:layout_column="3"
+            app:layout_row="3" />
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="19"
+            app:layout_column="4"
+            app:layout_row="3" />
+
+
+        <ImageView
+            android:id="@+id/imageView20"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="20"
+            app:layout_column="0"
+            app:layout_row="4" />
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="21"
+            app:layout_column="1"
+            app:layout_row="4" />
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="22"
+            app:layout_column="2"
+            app:layout_row="4" />
+
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="23"
+            app:layout_column="3"
+            app:layout_row="4" />
+
+        <ImageView
+            android:id="@+id/imageView24"
+            android:layout_width="65dp"
+            android:layout_height="55dp"
+
+            android:contentDescription="@string/todo0"
+            android:onClick="playerTap"
+            android:tag="24"
+            app:layout_column="4"
+            app:layout_row="4" />
+
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="273dp"
+        android:layout_height="75dp"
+
+        android:layout_marginBottom="20dp"
+        android:text="@string/status"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <GridLayout
+        android:id="@+id/gridLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="4dp"
+            android:onClick="gameRestart"
+            android:tint="@color/colorWhite"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_restart"
+            android:layout_column="0"
+            android:layout_row="1"/>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="4dp"
+            android:onClick="fabMainClick"
+            android:tint="@color/colorWhite"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_add"
+            android:layout_column="1"
+            android:layout_row="1"/>
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="4dp"
+            android:onClick="fabTwoClick"
+            android:tint="@color/colorWhite"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_pause"
+            android:layout_column="2"
+            android:layout_row="1"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:onClick="fabFourClick"
+            android:tint="@color/colorWhite"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_music"
+            android:layout_column="0"
+            android:layout_row="0"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:onClick="fabOneClick"
+            android:tint="@color/colorWhite"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_music"
+            android:layout_column="1"
+            android:layout_row="0"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:onClick="fabFiveClick"
+            android:tint="@color/colorWhite"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_music"
+            android:layout_column="2"
+            android:layout_row="0"/>
+
+    </GridLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

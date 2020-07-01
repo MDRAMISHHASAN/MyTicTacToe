@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">My TicTacToe</string>
+    <string name="grid_tic_tac_toe">grid tic tac toe</string>
+    <string name="welcome_to_tic_tac_toe">Welcome to TicTacToe</string>
+    <string name="todo0">TODO0</string>
+    <string name="todo1">TODO1</string>
+    <string name="todo2">TODO2</string>
+    <string name="todo3">TODO3</string>
+    <string name="todo4">TODO4</string>
+    <string name="todo5">TODO5</string>
+    <string name="todo6">TODO6</string>
+    <string name="todo7">TODO7</string>
+    <string name="todo8">TODO8</string>
+    <string name="status">X\'s turn \n Tap to play</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="game_restart">Game Restart</string>
+    <string name="title_activity_settings">Settings</string>
+
+
+    <string name="homescreen">HomeScreen</string>
+    <string name="tictactoe3x3">TicTacToe3x3</string>
+    <string name="tictactoe4x4">TicTacToe4x4</string>
+    <string name="tictactoe5x5">TicTacToe5x5</string>
+    <string name="settings">Settings</string>
+    <string name="aboutus">AboutUs</string>
+
+
+    <string name="myimage">myImage</string>
+    <string name="hi_everyone_aboutus">Hi everyone, I am Ramish a Sophomore Computer Engineering student at Sliet University(SLIETIAN).
+    I have done diploma from Aligarh Muslim University(A.M.U.)(ALIGS).I thank to all my friends and classmates who help me to develop this application software.</string>
+
+    <string name="game_rule"> Hi friends, This is a Tic Tac Toe game.Here two Players can play at a time, one will choose X other will choose
+        O. The player that will put his/her symbol continously in column,row or diagonally will be declared winner.
+        There are 3 Tic Tac Toe games.\n Tic Tac Toe 3 by 3 .\n Tic Tac Toe 4 by 4 .\n Tic Tac Toe 5 by 5 .
+
+    </string>
+</resources>
