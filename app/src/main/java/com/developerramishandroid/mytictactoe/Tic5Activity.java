@@ -22,11 +22,16 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Tic5Activity extends AppCompatActivity {
 
+    private AdView mAdView;
     private InterstitialAd mInterstitialAd;
     private View background;
     FloatingActionButton fabMain,fabOne,fabTwo,fabThree,fabFour,fabFive;
@@ -259,6 +264,8 @@ public class Tic5Activity extends AppCompatActivity {
         toast.setView(view);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.BOTTOM,0,260);
+
+        prepareBannerAd();
         prepareAd();
     }
 
@@ -292,6 +299,11 @@ public class Tic5Activity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+        if (player != null && player.isPlaying())
+        {
+            player.stop();
+            // player.release();
+        }
         showAd();
 
         int cx = background.getWidth() - getDips(100);
@@ -442,6 +454,17 @@ public class Tic5Activity extends AppCompatActivity {
             textViewToast.setText("No Music was Playing");
             toast.show();
         }
+    }
+
+    private void prepareBannerAd() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     public void prepareAd()

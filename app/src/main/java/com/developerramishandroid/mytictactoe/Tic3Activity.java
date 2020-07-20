@@ -23,33 +23,39 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 
 public class Tic3Activity extends AppCompatActivity {
 
+    private AdView mAdView;
     private View background;
     MediaPlayer player;
     private InterstitialAd mInterstitialAd;
     FloatingActionButton fabMain,fabOne,fabTwo,fabThree,fabFour,fabFive;
     boolean isMenuOpen = false, gameActive = true;
     OvershootInterpolator interpolator = new OvershootInterpolator();
-    TextView status,textViewScore1,textViewScore2,textViewToast;
-    String user1,user2;
+    TextView status,textViewScore1,textViewScore2,textViewToast,textViewTimer;
+    String user1,user2,winnerStr;
     GridLayout gridLayout;
     Toast toast;
     View view;
-    LottieAnimationView lottieAnimationView,lottieAnimationView2;
+    LottieAnimationView lottieAnimationView,lottieAnimationView2,lottieAnimationView3;
+    ImageView img;
+    CountDownTimer countDownTimer;
+    int tappedImage;
 
 
     // Player representation
     // 0 - X
     // 1 - O
-    int activePlayer = 0,score1 = 0,score2 = 0,roundCount=0;
+    int activePlayer = 0,score1 = 0,score2 = 0,roundCount=0,bonusScore = 5;
 
     int[] gameState = {2, 2 , 2, 2, 2, 2, 2, 2, 2};
 
@@ -62,145 +68,19 @@ public class Tic3Activity extends AppCompatActivity {
             {0,4,8}, {2,4,6}};
 
 
+
     @SuppressLint("SetTextI18n")
     public void playerTap (View view){
         if(gameActive) {
 
 
-            ImageView img = (ImageView) view;
-            int tappedImage = Integer.parseInt(img.getTag().toString());
+             img = (ImageView) view;
+            tappedImage = Integer.parseInt(img.getTag().toString());
 
-            if (gameState[tappedImage] == 2) {
-                gameState[tappedImage] = activePlayer;
-
-                player = MediaPlayer.create(this, R.raw.button_tap_sound);
-                player.start();
-
-
-                roundCount++;
-
-                if (activePlayer == 0) {
-                    img.setImageResource(R.drawable.x);
-                    activePlayer = 1;
-                    status = findViewById(R.id.status);
-                    status.setText("O's Turn");
-                } else {
-                    img.setImageResource(R.drawable.o);
-                    activePlayer = 0;
-                    status = findViewById(R.id.status);
-                    String user2 = "X's Turn";
-                    status.setText(user2);
-                }
-                img.setAlpha(1f) ;
-            }
+            PlayerTurn();
             // Check if any player has won
-            for (int[] winPosition : winPositions) {
-                if (gameState[winPosition[0]] == gameState[winPosition[1]] &&
-                        gameState[winPosition[1]] == gameState[winPosition[2]] &&
-                        gameState[winPosition[0]] != 2) {
-                    // Somebody has won! - Find out who!
-                    lottieAnimationView =findViewById(R.id.animation_view);
-                    lottieAnimationView.setVisibility(View.VISIBLE);
+            checkPlayerWon();
 
-
-                    player = MediaPlayer.create(this, R.raw.audience_applause);
-                    String winnerStr;
-                    gameActive = false;
-                   // img= (ImageView) winPosition[0];
-                    if (gameState[winPosition[0]] == 0) {
-                          winnerStr = "X has won";
-                          img.setImageResource(R.drawable.green_x);
-
-                          player.start();
-
-                          lottieAnimationView.setAnimation("won_animation.json");
-                          lottieAnimationView.playAnimation();
-
-                          score1 = score1 +10;
-                          textViewScore1 = findViewById(R.id.textViewScore1);
-                          textViewScore1.setText(String.valueOf(score1));
-
-                          new CountDownTimer(3000,1000)
-                          {
-                              @Override
-                              public void onTick(long millisUntilFinished) {
-
-                              }
-
-                              @Override
-                              public void onFinish() {
-                                  showAd();
-                              }
-                          }.start();
-
-                    } else {
-                        winnerStr = "O has won";
-                         img.setImageResource(R.drawable.green_o);
-
-                         player.start();
-
-                         lottieAnimationView.setAnimation("won_animation2.json");
-                         lottieAnimationView.playAnimation();
-
-                        score2 = score2 +10;
-                        textViewScore2 = findViewById(R.id.textViewScore2);
-                        textViewScore2.setText(String.valueOf(score2));
-
-                        new CountDownTimer(3000,1000)
-                        {
-                            @Override
-                            public void onTick(long millisUntilFinished) {
-
-                            }
-
-                            @Override
-                            public void onFinish() {
-                                showAd();
-                            }
-                        }.start();
-                    }
-
-                    // Update the status bar for winner announcement
-                    status = findViewById(R.id.status);
-                    status.setTextColor(Color.parseColor("#FFFFFF"));
-                    status.setTextSize(50);
-                    status.setText(winnerStr);
-
-                 break;
-                }
-                else if (roundCount == 9)
-                        {
-                            gameActive = false;
-                            status.setTextSize(60);
-                            status.setTextColor(Color.parseColor("#ffff00"));
-                            status.setText("Draw");
-
-                            lottieAnimationView2 =findViewById(R.id.animation_view2);
-                            lottieAnimationView2.setVisibility(View.VISIBLE);
-                            lottieAnimationView2.setAnimation("draw_animation.json");
-                            lottieAnimationView2.playAnimation();
-
-                            new CountDownTimer(3000,1000)
-                            {
-                                @Override
-                                public void onTick(long millisUntilFinished) {
-
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    lottieAnimationView2.setVisibility(View.INVISIBLE);
-                                    showAd();
-                                }
-                            }.start();
-                        }
-
-                      /* else if (gameState[0] != 2 && gameState[1] != 2 && gameState[2] != 2
-                        && gameState[3] != 2 && gameState[4] != 2 && gameState[5] != 2
-                        && gameState[6] != 2 && gameState[7] != 2 && gameState[8] != 2 )
-
-                     */
-            }
 
         }
         else
@@ -208,6 +88,212 @@ public class Tic3Activity extends AppCompatActivity {
                 textViewToast.setText("Please restart game.");
                 toast.show();
             }
+    }
+
+    private void PlayerTurn() {
+        if (gameState[tappedImage] == 2) {
+            gameState[tappedImage] = activePlayer;
+
+            player = MediaPlayer.create(this, R.raw.button_tap_sound);
+            player.start();
+
+
+            roundCount++;
+            if (roundCount == 1)
+                controlTimer();
+
+
+            if (activePlayer == 0) {
+                img.setImageResource(R.drawable.x);
+                activePlayer = 1;
+                status = findViewById(R.id.status);
+                user1 = getString(R.string.o_turn);
+                status.setText(user1);
+            } else {
+                img.setImageResource(R.drawable.o);
+                activePlayer = 0;
+                status = findViewById(R.id.status);
+                user2 = getString(R.string.x_turn);
+                status.setText(user2);
+            }
+            img.setAlpha(1f) ;
+        }
+    }
+
+    //int[][][] winPosition = {winPositions};
+    int [][][] winPosition = new int[][][]{winPositions};
+
+    private void checkPlayerWon() {
+        for (int[] winPosition : winPositions) {
+            if (gameState[winPosition[0]] == gameState[winPosition[1]] &&
+                    gameState[winPosition[1]] == gameState[winPosition[2]] &&
+                    gameState[winPosition[0]] != 2) {
+                // Somebody has won! - Find out who!
+                lottieAnimationView =findViewById(R.id.animation_view);
+                lottieAnimationView.setVisibility(View.VISIBLE);
+
+
+                player = MediaPlayer.create(this, R.raw.audience_applause);
+
+                gameActive = false;
+                // img= (ImageView) winPosition[0];
+
+                if (gameState[winPosition[0]] == 0) {
+                    winnerStr = "X has won";
+                    img.setImageResource(R.drawable.green_x);
+
+                    player.start();
+
+
+                    countDownTimer.cancel();
+                    lottieAnimationView3.pauseAnimation();
+                    //   lottieAnimationView3.setVisibility(View.INVISIBLE);
+
+                    lottieAnimationView.setAnimation("won_animation.json");
+                    lottieAnimationView.playAnimation();
+
+                    score1 = score1 +10;
+                    //  textViewScore1 = findViewById(R.id.textViewScore1);
+                    // textViewScore1.setText(String.valueOf(score1));
+
+                    new CountDownTimer(3000,1000)
+                    {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            showAd();
+                        }
+                    }.start();
+
+                } else {
+                    winnerStr = "O has won";
+                    img.setImageResource(R.drawable.green_o);
+
+                    player.start();
+
+                    countDownTimer.cancel();
+                    lottieAnimationView3.pauseAnimation();
+                    //   lottieAnimationView3.setVisibility(View.INVISIBLE);
+
+                    lottieAnimationView.setAnimation("won_animation2.json");
+                    lottieAnimationView.playAnimation();
+
+                    score2 = score2 +10;
+                    //   textViewScore2 = findViewById(R.id.textViewScore2);
+                    //  textViewScore2.setText(String.valueOf(score2));
+
+                    new CountDownTimer(3000,1000)
+                    {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            showAd();
+                        }
+                    }.start();
+                }
+                //WinnerAnnouncement();
+
+                // Update the status bar for winner announcement
+                status = findViewById(R.id.status);
+               // status.setTextColor(Color.parseColor("#FFFFFF"));
+               // status.setTextSize(50);
+                status.setText(winnerStr);
+
+                break;
+            }
+            else if (roundCount == 9)
+            {
+                gameActive = false;
+               // status.setTextSize(60);
+               // status.setTextColor(Color.parseColor("#ffff00"));
+                status.setText("Draw");
+
+                countDownTimer.cancel();
+                lottieAnimationView3.pauseAnimation();
+
+                lottieAnimationView2 =findViewById(R.id.animation_view2);
+                lottieAnimationView2.setVisibility(View.VISIBLE);
+                lottieAnimationView2.setAnimation("draw_animation.json");
+                lottieAnimationView2.playAnimation();
+
+                new CountDownTimer(3000,1000)
+                {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        lottieAnimationView2.setVisibility(View.INVISIBLE);
+                        showAd();
+                    }
+                }.start();
+            }
+
+                      /* else if (gameState[0] != 2 && gameState[1] != 2 && gameState[2] != 2
+                        && gameState[3] != 2 && gameState[4] != 2 && gameState[5] != 2
+                        && gameState[6] != 2 && gameState[7] != 2 && gameState[8] != 2 )
+
+                     */
+        }
+    }
+
+
+
+
+    public void controlTimer()
+    {
+        textViewTimer = findViewById(R.id.textViewTimer);
+        lottieAnimationView3 =findViewById(R.id.animation_view3);
+        lottieAnimationView3.setVisibility(View.VISIBLE);
+        //lottieAnimationView3.setAnimation("draw_animation.json");
+        lottieAnimationView3.playAnimation();
+
+
+      countDownTimer=  new CountDownTimer(30000,1000)
+        {
+
+            @Override
+            public void onTick(long millisUntilFinished)
+            {
+                update((int)millisUntilFinished/1000);
+
+            }
+
+            @Override
+            public void onFinish()
+            {
+                score1 = score1 +bonusScore;
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),R.raw.timer_buzzer);
+                mediaPlayer.start();
+                lottieAnimationView3.pauseAnimation();
+                //lottieAnimationView3.setVisibility(View.INVISIBLE);
+            }
+        }.start();
+      //countDownTimer.start();
+
+    }
+
+    public void update(int timerUpdate)
+    {
+        int second = timerUpdate;
+
+        String secString;
+        secString = Integer.toString(second);
+
+        if (second <= 9)
+            secString = "0" + secString;
+
+        textViewTimer.setText( "0:" + secString );
     }
 
     public void gameRestart(View view) {
@@ -219,6 +305,7 @@ public class Tic3Activity extends AppCompatActivity {
             gameActive = true;
             activePlayer = 0;
             roundCount = 0;
+            textViewTimer.setText( "00:00");
           //  lottieAnimationView2.setVisibility(View.INVISIBLE);
             Arrays.fill(gameState, 2);
 
@@ -227,9 +314,9 @@ public class Tic3Activity extends AppCompatActivity {
             for (int i = 0; i < gridLayout.getChildCount(); i++)
                 ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
 
-            status.setTextSize(30);
-            status.setTextColor(Color.parseColor("#FF0000"));
-            status.setText("X's Turn \n Tap to play");
+            //status.setTextSize(30);
+           // status.setTextColor(Color.parseColor("#FF0000"));
+            status.setText(user2);
 
         }
     }
@@ -286,8 +373,11 @@ public class Tic3Activity extends AppCompatActivity {
 
         initToast();
 
-        prepareAd();
+        prepareBannerAd();
+
+        prepareInterstitialAd();
     }
+
 
     private void initToast() {
         toast = new Toast(getApplicationContext());
@@ -328,6 +418,13 @@ public class Tic3Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        if (player != null && player.isPlaying())
+        {
+            player.stop();
+           // player.release();
+        }
+
+
 
         showAd();
 
@@ -431,8 +528,10 @@ public class Tic3Activity extends AppCompatActivity {
     public void fabOneClick(View view)
     {
         if (player != null && player.isPlaying())
+        {
             player.stop();
-
+            //player.release();
+        }
             player = MediaPlayer.create(this, R.raw.guitar);
             player.start();
 
@@ -444,7 +543,10 @@ public class Tic3Activity extends AppCompatActivity {
     public void fabFourClick(View view)
     {
         if (player != null && player.isPlaying())
+        {
             player.stop();
+           // player.release();
+        }
 
         player = MediaPlayer.create(this, R.raw.drum_machine);
         player.start();
@@ -457,8 +559,10 @@ public class Tic3Activity extends AppCompatActivity {
     public void fabFiveClick(View view)
     {
         if (player != null && player.isPlaying())
+        {
             player.stop();
-
+           // player.release();
+        }
         player = MediaPlayer.create(this, R.raw.drum_pad);
         player.start();
         textViewToast.setText("Drum Pad");
@@ -471,7 +575,7 @@ public class Tic3Activity extends AppCompatActivity {
         if (player != null && player.isPlaying())
         {
             player.stop();
-            //player.release();
+           // player.release();
 
             textViewToast.setText("Music Stopped");
             toast.show();
@@ -483,7 +587,7 @@ public class Tic3Activity extends AppCompatActivity {
         }
     }
 
-    public void prepareAd()
+    public void prepareInterstitialAd()
     {
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -497,46 +601,28 @@ public class Tic3Activity extends AppCompatActivity {
         else
             Log.i("ad", "Interstitial ad is not loaded ");
 
-        prepareAd();
+        prepareInterstitialAd();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i("ramish", "onStart: ");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("ramish", "onResume: ");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("ramish", "onPause: ");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("ramish", "onStop: ");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i("ramish", "onRestart: ");
+    private void prepareBannerAd() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
     protected void onDestroy() {
         //finish();
         super.onDestroy();
-        Runtime.getRuntime().gc();
+       // Runtime.getRuntime().gc();
         Log.i("ramish", "onDestroy: ");
-       // android.os.Process.killProcess(android.os.Process.myPid());
+
+        // android.os.Process.killProcess(android.os.Process.myPid());
 
     }
 }

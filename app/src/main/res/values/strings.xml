@@ -27,12 +27,14 @@
 
 
     <string name="myimage">myImage</string>
-    <string name="hi_everyone_aboutus">Hi everyone, I am Ramish a Sophomore Computer Engineering student at Sliet University(SLIETIAN).
-    I have done diploma from Aligarh Muslim University(A.M.U.)(ALIGS).I thank to all my friends and classmates who help me to develop this application software.</string>
+    <string name="hi_everyone_aboutus">Hi everyone, We are a small team of engineers, currently doing B.Tech in Computer Engineering.
+        We thank to all our friends, classmates and seniors who encourage us to develop application software.</string>
 
     <string name="game_rule"> Hi friends, This is a Tic Tac Toe game.Here two Players can play at a time, one will choose X other will choose
         O. The player that will put his/her symbol continously in column,row or diagonally will be declared winner.
         There are 3 Tic Tac Toe games.\n Tic Tac Toe 3 by 3 .\n Tic Tac Toe 4 by 4 .\n Tic Tac Toe 5 by 5 .
 
     </string>
+    <string name="x_turn">&lt;--X\'s Turn</string>
+    <string name="o_turn">O\'s Turn--&gt;</string>
 </resources>

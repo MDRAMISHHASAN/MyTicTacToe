@@ -18,7 +18,7 @@ public class AboutusActivity extends AppCompatActivity {
 
 
     private View background;
-    ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +47,6 @@ public class AboutusActivity extends AppCompatActivity {
 
         }
 
-        imageView = findViewById(R.id.imageView);
-        imageView.animate().rotation(720f).setDuration(3000);
     }
 
 
@@ -137,11 +135,22 @@ public class AboutusActivity extends AppCompatActivity {
         openUrl("https://www.instagram.com/mdramishhasan");
     }
 
+    public void youtubeWeb(View view)
+    {
+        openUrl("https://www.youtube.com/channel/UCQ-Tp0TjPJBi0s5UeNxzZsw");
+    }
+
+    public void youtubeWeb2(View view)
+    {
+        openUrl("https://www.youtube.com/channel/UCO-svRkbmtA_mzl9JAEV54g");
+    }
+
     public void openUrl(String url)
     {
         Uri uri = Uri.parse(url);
         Intent launchWeb = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(launchWeb);
     }
+
 
 }

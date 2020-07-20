@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_id"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/menu_id_Share"
+        android:title="Share App" />
+
+    <item
+        android:id="@+id/menu_id_tutorial"
+        android:title="Tutorials" />
 
 </menu>

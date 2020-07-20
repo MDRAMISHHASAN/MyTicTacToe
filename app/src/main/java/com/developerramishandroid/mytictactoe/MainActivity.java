@@ -5,9 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -19,6 +24,30 @@ public class MainActivity extends AppCompatActivity {
     View view;
     TextView textViewToast;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.app_bar_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+         super.onOptionsItemSelected(item);
+
+         switch (item.getItemId()) {
+             case R.id.menu_id_Share:
+                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                 return true;
+
+             case R.id.menu_id_tutorial:
+                 Toast.makeText(this, "Tutorials", Toast.LENGTH_SHORT).show();
+                 return true;
+
+             default:
+                 return false;
+         }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

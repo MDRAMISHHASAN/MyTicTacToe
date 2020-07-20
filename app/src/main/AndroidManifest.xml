@@ -13,6 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".OnBoardingActivity"></activity>
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".Tic3OnlineActivity" />
+        <activity android:name=".Tic3AutoActivity" />
+        <activity android:name=".ScoreActivity" />
+        <activity android:name=".Tic3ModeActivity" />
+        <activity android:name=".Tic5AutoActivity" />
+        <activity android:name=".Tic4AutoActivity" />
+        <activity android:name=".Tic5OnlineActivity" />
+        <activity android:name=".Tic4OnlineActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -21,58 +31,51 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MainActivity"
-            android:label="My TicTacToe" >
+        <activity
+            android:name=".MainActivity"
+            android:label="My TicTacToe">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".HomeActivity"
             android:label="Home"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Transparent"
-            tools:ignore="DuplicateActivity"/>
-
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".Tic3Activity"
             android:label="TicTacToe 3 By 3"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Transparent"
-            tools:ignore="DuplicateActivity"/>
-
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".Tic4Activity"
             android:label="TicTacToe 4 By 4"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Transparent"
-            tools:ignore="DuplicateActivity"/>
-
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".Tic5Activity"
             android:label="TicTacToe 5 By 5"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Transparent"
-            tools:ignore="DuplicateActivity"/>
-
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Transparent"
-            tools:ignore="DuplicateActivity"/>
-
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".AboutusActivity"
             android:label="About Us"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Transparent"
-            tools:ignore="DuplicateActivity"/>
-
+            tools:ignore="DuplicateActivity" />
     </application>
 
 </manifest>

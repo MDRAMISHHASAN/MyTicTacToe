@@ -8,8 +8,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.animation.Animator;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -36,6 +37,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.Date;
+import java.util.UUID;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -52,10 +58,10 @@ public class HomeActivity extends AppCompatActivity {
     Toast toast;
     View view;
     TextView textViewToast;
-
-
-
     private View background;
+    StorageReference storageReference;
+    FirebaseStorage firebaseStorage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,6 +213,11 @@ public class HomeActivity extends AppCompatActivity {
             textViewName.setText(personName);
             textViewEmail.setText(personEmail);
             Glide.with(this).load(personPhoto).into(imageViewProfilePic);
+
+
+           // firebaseStorage = FirebaseStorage.getInstance();
+            storageReference = FirebaseStorage.getInstance().getReference();
+            storageReference.child("users").child("userId").child("photoUrl/"+ personPhoto);
 
 
 
