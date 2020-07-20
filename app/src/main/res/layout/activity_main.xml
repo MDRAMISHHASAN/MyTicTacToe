@@ -9,8 +9,8 @@
 
 
     <androidx.gridlayout.widget.GridLayout
-        android:layout_width="330dp"
-        android:layout_height="570dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
             android:onClick="homeScreen"
             app:layout_column="0"
             app:layout_row="0"
-            app:srcCompat="@drawable/home" />
+            app:srcCompat="@drawable/home"/>
 
         <ImageButton
             android:id="@+id/tic3Screen"

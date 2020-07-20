@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     android:background="#A9C36E"
     tools:context=".AboutusActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/myimage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/myimage" />
 
     <TextView
         android:id="@+id/textView"
@@ -26,61 +17,159 @@
         android:layout_height="170dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/hi_everyone_aboutus"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:textSize="18sp" />
 
-    <LinearLayout
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.010101">
+        android:text="Join us on Social Media Sites\n for new apps."
+        android:textColor="#039be5"
+        android:textSize="18sp"
+        />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
 
         <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:layout_margin="4dp"
 
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+
+            android:layout_margin="5dp"
             android:onClick="facebookWeb"
-            app:srcCompat="@drawable/facebook_icon" />
+            app:srcCompat="@drawable/facebook_icon"
+            android:background="@android:color/transparent"
+            android:layout_row="0"
+            android:layout_column="0"/>
 
         <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:layout_margin="4dp"
+            android:layout_margin="5dp"
             android:onClick="twitterWeb"
-            app:srcCompat="@drawable/twitter_icon" />
+            app:srcCompat="@drawable/twitter_icon"
+            android:background="#ffffff"
+            android:layout_row="0"
+            android:layout_column="1"/>
 
         <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:layout_margin="4dp"
+            android:layout_margin="5dp"
             android:onClick="linkedInWeb"
-            app:srcCompat="@drawable/linkedin_icon" />
+            app:srcCompat="@drawable/linkedin_icon"
+            android:background="@android:color/transparent"
+            android:layout_row="0"
+            android:layout_column="2"/>
 
         <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:layout_margin="4dp"
+            android:layout_margin="5dp"
             android:onClick="instagramWeb"
-            app:srcCompat="@drawable/instagram_icon" />
+            app:srcCompat="@drawable/instagram_icon"
+            android:background="@android:color/transparent"
+            android:layout_row="0"
+            android:layout_column="3"/>
 
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ImageButton
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+
+            android:layout_margin="5dp"
+            android:onClick="youtubeWeb"
+            app:srcCompat="@drawable/youtube_icon"
+            android:background="@android:color/transparent"
+            android:layout_row="0"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Shaktiman Gaming"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:gravity="center"/>
+
+        <ImageButton
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:onClick="youtubeWeb2"
+            app:srcCompat="@drawable/youtube_icon"
+            android:background="@android:color/transparent"
+            android:layout_row="1"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Education Adda"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:gravity="center"/>
+
+        <ImageButton
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:onClick="linkedInWeb"
+            app:srcCompat="@drawable/linkedin_icon"
+            android:background="@android:color/transparent"
+            android:layout_row="2"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Education Adda"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:gravity="center"/>
+
+        <ImageButton
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:onClick="instagramWeb"
+            app:srcCompat="@drawable/instagram_icon"
+            android:background="@android:color/transparent"
+            android:layout_row="3"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Education Adda"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:gravity="center"/>
+
+
+    </GridLayout>
+
+</LinearLayout>
